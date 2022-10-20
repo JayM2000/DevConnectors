@@ -86,7 +86,7 @@ export  const logins = ({email,password}) => async dispatch => {
 
     }
     catch(err){
-        console.log(err);
+        console.log(Object.keys(err));
         dispatch(setalert(err,'danger'));
         // console.log(errs);
 
