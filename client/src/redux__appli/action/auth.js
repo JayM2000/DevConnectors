@@ -25,7 +25,7 @@ export const loads = () => async dispatch => {
         // console.log(val.data.mess);
     }
     catch(err){
-        // console.log('ran catch stat auth accccccccc');
+        console.log(err);
         dispatch({
             type:'loginf'
         })
@@ -73,6 +73,9 @@ export  const logins = ({email,password}) => async dispatch => {
     try{
         const val = await axios.post('/rout/login',body,config);
 
+        console.log('here tokensssssssssssssssssssssssssss');
+        console.log(val.data.tk);
+        
         if(val.data.st === 404){
             throw `${val.data.mess}`;
         }

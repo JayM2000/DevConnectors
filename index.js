@@ -4,14 +4,15 @@ const path = require('path');
 const val = require('./mongoconnection/mongos.js');
 val();
 // const cookie = require('cookie-parser');
-// const rout = require('./routes/routes_user');
-// const routpost = require('./routes/post');
-const bodyParser = require('body-parser');
+
+// const bodyParser = require('body-parser');
 // const cors = require('cors');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
+
+app.use(express.json());
 
 // app.use(cors({credentials:true,origin:"http://localhost:3000"}));
 // app.use(cors());
