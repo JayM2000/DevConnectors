@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const val = require('./mongoconnection/mongos.js');
 val();
 // const cookie = require('cookie-parser');
