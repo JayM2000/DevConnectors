@@ -3,8 +3,8 @@ const app = express();
 const val = require('./mongoconnection/mongos.js');
 val();
 // const cookie = require('cookie-parser');
-const rout = require('./routes/routes_user');
-const routpost = require('./routes/post');
+// const rout = require('./routes/routes_user');
+// const routpost = require('./routes/post');
 const bodyParser = require('body-parser');
 // const cors = require('cors');
 app.use(bodyParser.json());
@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({
 
 // app.use(cors({credentials:true,origin:"http://localhost:3000"}));
 // app.use(cors());
-app.use('/rout',rout);
-app.use('/routpost',routpost);
+app.use('/rout',require('./routes/routes_user'));
+app.use('/routpost',require('./routes/post'));
 // app.use(cookie());
 
 

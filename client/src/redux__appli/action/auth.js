@@ -44,12 +44,6 @@ export  const authh = ({name,email,password}) => async dispatch => {
 
     try{
         const val = await axios.post('/rout/signup',body,config);
-        //  dispatch({
-        //     type:'regs',
-        //     payload:{token:val.data.tk}
-        //  });
-
-        //  dispatch(loads());
 
          dispatch(setalert(`Register in database ${val.data.mess}`,'dark'));
     }
