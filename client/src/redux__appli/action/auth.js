@@ -13,7 +13,7 @@ export const loads = () => async dispatch => {
         const val = await axios.get('/rout/autho',config);
 
         if(val.data.st === 'not'){
-            throw new Error('');
+            throw 'e';
         }
 
         dispatch({
@@ -79,6 +79,10 @@ export  const logins = ({email,password}) => async dispatch => {
     try{
         const val = await axios.post('/rout/login',body,config);
 
+        if(val.data.st === 404){
+            throw `${val.data.mess}`;
+        }
+
          dispatch({
             type:'sign',
             payload:{token:val.data.tk}
@@ -88,9 +92,8 @@ export  const logins = ({email,password}) => async dispatch => {
 
     }
     catch(err){
-        const errs = err.response.data.err;
-
-        dispatch(setalert(errs,'danger'));
+        console.log(err);
+        dispatch(setalert(err,'danger'));
         // console.log(errs);
 
         dispatch({

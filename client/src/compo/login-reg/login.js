@@ -3,10 +3,10 @@ import { Link ,Navigate} from "react-router-dom";
 import '../../App.scss';
 import { connect } from 'react-redux';
 import setalert from '../../redux__appli/action/alert';
-import {logins as authh} from '../../redux__appli/action/auth';
+import {logins as au} from '../../redux__appli/action/auth';
 import PropTypes from 'prop-types';
 
-const Log = ({authh,isauth}) => {
+const Log = ({au,isauth}) => {
     const [forms,setForms] = useState({
         email:'',
         password:''
@@ -22,7 +22,7 @@ const Log = ({authh,isauth}) => {
         e.preventDefault();
         
         // console.log(forms);
-        authh({ email, password } );
+        au({ email, password } );
     };
 
     if(isauth){
@@ -64,7 +64,7 @@ const Log = ({authh,isauth}) => {
 
 Log.propTypes = {
     setalert: PropTypes.func.isRequired,
-    authh: PropTypes.func.isRequired,
+    au: PropTypes.func.isRequired,
     isauth: PropTypes.bool
 };
 
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
  });
 
 // export default Log;
-export default connect(mapStateToProps, { setalert,authh})(Log);
+export default connect(mapStateToProps, { setalert,au})(Log);

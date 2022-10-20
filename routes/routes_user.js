@@ -56,24 +56,16 @@ rout.post('/login', async (req, res) => {
     try {
         const infos = await userdb.logindet(em, pass);
 
-        // console.log(infos._doc);
         const id = infos._doc._id;
         const token = jwt.sign({ id: id.toString() }, 'shubh', {
             expiresIn: "10000s"
         });
 
-        // res.cookie(String(id), token, {
-        //     path: '/',
-        //     expires: new Date(Date.now() + 1000 * 100),
-        //     httpOnly: true,
-        //     sameSite: 'lax'
-        // });
-
-        res.status(200).send({ tk: token });
+        res.json({st:200, tk: token });
 
     }
     catch (err) {
-        res.status(400).send({ err: err });
+        res.json({ st:404,mess: err });
     }
 });
 
