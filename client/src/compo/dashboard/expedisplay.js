@@ -39,7 +39,7 @@ const Experience = ({ experience, deleteexp }) => {
           </thead>
           <tbody>{experiences}</tbody>
         </table>
-      </Fragment>) : (<div className="my-2">No <u>Education</u> details found</div>)
+      </Fragment>) : (<div className="my-2">No <u>Experience</u> details found</div>)
   );
 };
 
