@@ -3,7 +3,6 @@ const app = express();
 const path = require('path');
 const val = require('./mongoconnection/mongos.js');
 val();
-// const cookie = require('cookie-parser');
 
 // const bodyParser = require('body-parser');
 // const cors = require('cors');
@@ -15,15 +14,8 @@ val();
 app.use(express.json());
 
 // app.use(cors({credentials:true,origin:"http://localhost:3000"}));
-// app.use(cors());
 app.use('/rout',require('./routes/routes_user'));
 app.use('/routpost',require('./routes/post'));
-// app.use(cookie());
-
-
-// app.get('/', (req,res) =>{
-//     res.send('hello there worked ....???');
-// });
 
 // SERVER PUSHING TO HEROKU
 if(process.env.NODE_ENV === 'production'){

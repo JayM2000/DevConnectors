@@ -263,7 +263,7 @@ export const deleteacc = () => async dispatch => {
                 type:'deleteprofile'
             });
 
-            dispatch(setalert(`Your Account Deleted -> ${dt.data.mess}`));
+            dispatch(setalert(`Your Account Deleted as well profile pic -> ${dt.data.mess}`));
         }
         catch(err) {
             const errs = err.response.data.st.message;

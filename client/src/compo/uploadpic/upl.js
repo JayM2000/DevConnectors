@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { stor } from '../firebase/firebases';
@@ -9,7 +9,6 @@ import Compressor from 'compressorjs';
 
 
 const Upl = ({ profileget: { user: { _id } }, uploadpic, upderr, upderrr }) => {
-
 
     const [photo, setphoto] = useState();
     const [progresspercent, setProgresspercent] = useState(0);
@@ -30,8 +29,8 @@ const Upl = ({ profileget: { user: { _id } }, uploadpic, upderr, upderrr }) => {
             if (image.size < 4500000) {
                 new Compressor(image, {
                     quality: 0.4, // 0.6 can also be used, but its not recommended to go below.
-                    success: (compressedResult) => {     
-                          setphoto(compressedResult);
+                    success: (compressedResult) => {
+                        setphoto(compressedResult);
                     },
                 });
             }

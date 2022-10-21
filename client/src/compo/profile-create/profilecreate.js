@@ -138,7 +138,7 @@ const Profilecreate = ({ alert,auth:{user}, profileget: { profile, load }, creat
                     <div className="form-group">
                         <input type="text" placeholder="Location" name="location" value={location} onChange={(e) => { return func(e) }} />
                         <small className="form-text"
-                        >City & state suggested (eg. Boston, MA)</small>
+                        >City & state suggested (eg. Pune, Maharashtra)</small>
 
                     </div>
                     <div className="form-group">
@@ -151,13 +151,13 @@ const Profilecreate = ({ alert,auth:{user}, profileget: { profile, load }, creat
                     <div className="form-group">
                         <input
                             type="text"
-                            placeholder="Github Username"
+                            placeholder="Github Username or Link"
                             name="githubusername"
                             value={githubusername} onChange={(e) => { return func(e) }}
                         />
                         <small className="form-text"
-                        >If you want your latest repos and a Github link, include your
-                            username</small>
+                        >Include your
+                            username or Link of your repository</small>
 
                     </div>
                     <div className="form-group">
