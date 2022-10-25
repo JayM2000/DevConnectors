@@ -7,7 +7,7 @@ import Spin from '../spinners/spinner';
 import Profitem from './profileitem';
 import Pagi from './pagi';
 
-const Profile = ({ profall: { profiles, load }, getallprofile }) => {
+const Profile = ({ auth:{_id},profall: { profiles, load }, getallprofile }) => {
 
     const [opt, setopt] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -19,8 +19,6 @@ const Profile = ({ profall: { profiles, load }, getallprofile }) => {
 
     const currentRecords = profiles.slice(indexOfFirstRecord, indexOfLastRecord);
     const nPages = Math.ceil(profiles.length / recordsPerPage);
-
-    const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
 
     useEffect(() => {
         getallprofile(opt);
@@ -77,7 +75,8 @@ Profile.propTypes = {
 };
 
 const maps = (st) => ({
-    profall: st.profileall
+    profall: st.profileall,
+    auth:st.auth
 });
 
 export default connect(maps, { getallprofile })(Profile);

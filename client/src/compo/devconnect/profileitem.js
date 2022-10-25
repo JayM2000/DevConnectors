@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const profileitem = ({ prof: {
+const profileitem = ({prof: {
     owner: { _id, name },
     status,
     company,
@@ -14,7 +14,8 @@ const profileitem = ({ prof: {
 
     const dd = 'https://firebasestorage.googleapis.com/v0/b/devopss-61796.appspot.com/o/defaults%2Favtr.png?alt=media&token=9913e6ef-c10c-4e1d-a505-572f04867343';
     return (
-
+        <React.Fragment>
+{/* connected developers */}
         <div className='profile bg-light'>
 
             <div className="bg-image hover-overlay hover-zoom hover-shadow ripple">
@@ -40,17 +41,13 @@ const profileitem = ({ prof: {
                     </li>
                 ))}
             </ul>
-            <div className=" ss">
-                (<Link to={`/connecteddevop/${_id}`} className='conn'>
-                    <span className='fontconn'><b><span className="dev">{' '}{devconnect.length > 0 ? devconnect.length : 'No'}</span> Developers Connected</b> </span>
-                </Link>)
-            </div>
         </div>
+        </React.Fragment>
     )
 };
 
 profileitem.propTypes = {
-    prof: PropTypes.object.isRequired
-}
+    prof: PropTypes.object.isRequired,
+};
 
 export default profileitem; 

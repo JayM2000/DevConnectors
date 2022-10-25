@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const verifytk = require('../verify/auth.js');
 const config = require('../config/def.json');
 const reqq = require('request');
+const { findOne } = require('../models/users');
 // const upd = require('./fileupload');
 
 rout.post('/signup', async (req, res) => {
@@ -197,7 +198,7 @@ const dashboards = async (req, res) => {
     try {
         const user = await taskdb.find().populate({ path: 'owner' });
 
-        console.log(user);
+        // console.log(user);
         res.json({ mess: user });
     }
     catch (err) {
@@ -212,7 +213,12 @@ rout.get(
         try {
             const users = await taskdb.find({ owner: user_id}).populate({path: 'owner'});
 
-            res.json({mess: users[0]});
+            console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+            console.log(users[0]);
+            const profall = await taskdb.find().populate({path:'owner'});
+            const arr = profall.filter((ele) => users[0].devconnect.includes(String(ele.owner._id)));
+
+            res.json({mess: users[0], profdev:arr});
             
         } catch (err) {
             // console.error(err.message);
@@ -387,6 +393,52 @@ const authoo = async (req, res) => {
         res.status(500).json({ err: err });
     }
 };
+
+rout.post('/devconnect/:iid' ,verifytk,async (req,res) => {
+
+    const userid = req.id;
+
+    try {
+        const vl = await taskdb.findOne({_id:req.params.iid});
+
+        if(!vl){
+            throw 'Profile not found';
+        }
+
+        const chk = vl.devconnect.includes(String(userid));
+
+        if(vl && !chk){
+            const vll = await taskdb.updateOne({_id:req.params.iid},{ $push: {devconnect:String(userid)} });
+
+            if(!vll){
+                throw 'some error occured';
+            }
+                return res.json({st:200});
+        }
+        else{
+            throw 'You have Connected to this developer';
+        }
+
+    } catch (err) {
+        res.json({st:404,mess:err});
+    }
+});
+
+rout.put('/delcon/:iid',verifytk,async (req,res) => {
+    const userid = req.id;
+
+    try {
+        const vll = await taskdb.updateOne({_id:req.params.iid},{ $pull: {devconnect:String(userid)} });
+
+        if(!vll){
+            throw 'some error occured';
+        }
+        res.json({st:00,mess:'You Disconnected from this Developer'});
+
+    } catch (err) {
+        res.json({st:404,mess:err});
+    }
+});
 
 rout.get('/autho', verifytk, authoo);
 

@@ -20,6 +20,7 @@ import DevProf from './compo/profile_developers/profile';
 import Posts from './compo/posts/posts';
 import Post from './compo/post/post';
 import Upld from './compo/uploadpic/upl';
+import Newone from './compo/devconnect/devconn';
 
 const App = () =>{
 
@@ -47,6 +48,10 @@ return (
           <Route
             path='/devprof/:ids'
             element={<Pr component={DevProf} />}
+          />
+          <Route
+            path='/connecteddevop/:ids'
+            element={<Pr component={Newone} />}
           />
           <Route
             path='/dashb'

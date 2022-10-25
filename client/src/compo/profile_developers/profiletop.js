@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+import {connectdev,deldev} from '../../redux__appli/action/profile';
+import {connect} from 'react-redux';
 
 const Profiletop = ({ proff: {
     status,
@@ -8,9 +11,21 @@ const Profiletop = ({ proff: {
     website,
     social,
     owner: { name, avatar },
-    avtt
-} }) => {
+    avtt,_id,devconnect
+} ,auth:{user},connectdev,deldev}) => {
+
     const dd = 'https://firebasestorage.googleapis.com/v0/b/devopss-61796.appspot.com/o/defaults%2Favtr.png?alt=media&token=9913e6ef-c10c-4e1d-a505-572f04867343';
+    
+    function connectdeldevfunc(e){
+        connectdev(_id);
+        e.currentTarget.disabled = true;
+    }
+    
+    function deldevfunc(e){
+        deldev(_id);
+        e.currentTarget.disabled = true;
+    }
+
     return (
         <div className="profile-top bg-primary p-2">
 
@@ -48,12 +63,24 @@ const Profiletop = ({ proff: {
                             ))
                         : null}
             </div>
+            {
+                devconnect.includes(String(user._id)) ? (<button disabled={false} onClick={(e) => deldevfunc(e)} type="button" className="gitbtnn btn btn-success ">Disconnect</button>)  : 
+                (<button disabled={false} onClick={(e) => connectdeldevfunc(e)} type="button" className="gitbtn1 btn btn-success">Connect</button>)
+            }
+            
+             
         </div>
     )
 }
 
 Profiletop.propTypes = {
-    proff: PropTypes.object.isRequired
+    proff: PropTypes.object.isRequired,
+    connectdev: PropTypes.func.isRequired,
+    deldev:PropTypes.func.isRequired,
 }
 
-export default Profiletop;
+const maps = (st) => ({
+    auth: st.auth
+})
+
+export default connect(maps,{connectdev,deldev})(Profiletop);

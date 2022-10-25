@@ -1,7 +1,7 @@
-import ax from 'axios';
 
 const inits = {
     profile:null,
+    cdev:[],
     profiles:[],
     load:true,
     error:{}
@@ -20,7 +20,8 @@ const profileall = (st = inits,action) => {
         case 'profilesu':
             return {
                 ...st,
-                profile:payload,
+                profile:payload.mess,
+                cdev:payload.profdev,
                 load:false
             }
 

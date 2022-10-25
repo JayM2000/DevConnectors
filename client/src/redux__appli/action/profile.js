@@ -10,7 +10,7 @@ export const profileall = () =>async dispatch => {
 
         dispatch({
             type:'profilesu',
-            payload:dt.data.mess
+            payload:dt.data
         });
         
     }
@@ -67,12 +67,10 @@ export const getprofilebyid = (ids) =>async dispatch => {
     
     try {
         const dt = await ax.get(`/rout/userss/${ids}`);
-
-        // console.log('dtt->>>>>>>>>>>>>>>>>>>>>');
-        // console.log(dt.data.mess);
+        
         dispatch({
             type:'profilesu',
-            payload:dt.data.mess
+            payload:dt.data
         });
     }
     catch(err){
@@ -158,6 +156,10 @@ export const eexp = (formdata,navi) =>async dispatch => {
 
         dispatch(setalert(errs,'danger'));
     }
+};
+
+export const messd = () => dispatch => {
+    dispatch(setalert('Not allowed to view others ', 'danger'));
 };
 
 // adding education
@@ -306,3 +308,62 @@ export const upderr = () => dispatch => {
 export const upderrr = () => dispatch => {
     dispatch(setalert('File should be less than 4.5Mb ', 'danger'));
 };
+
+export const connectdev = (iid) =>async dispatch => {
+    try{
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        const dt = await ax.post(`/rout/devconnect/${iid}`,config);
+
+        if(dt.data.st === 404){
+            throw `${dt.data.mess}`;
+        }
+
+        dispatch(setalert('You Connected to this Developer','success'));
+    }
+    catch(err){
+        console.log(err, Object.keys(err))
+        dispatch(setalert(err,'danger'));
+    }
+}
+
+export const deldev = (iid) =>async dispatch => {
+    try{
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        const dt = await ax.put(`/rout/delcon/${iid}`,config);
+
+        if(dt.data.st === 404){
+            throw `${dt.data.mess}`;
+        }
+
+        dispatch(setalert(dt.data.mess,'dark'));
+    }
+    catch(err){
+        console.log(err, Object.keys(err))
+        dispatch(setalert(err,'danger'));
+    }
+}
+
+// export const devconn = (iid) =>async dispatch => {
+//     try {
+//         const config = {
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         };
+
+//         const vl = await ax.get(`/rout/devconn/${iid}`,config);
+
+//     } catch (err) {
+        
+//     }
+// };

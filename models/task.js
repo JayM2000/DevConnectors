@@ -9,6 +9,9 @@ const tasksss = new sch({
   avtt:{
     type:String
   },
+  devconnect:{
+    type:[String]
+  },
   company: {
     type: String
   },

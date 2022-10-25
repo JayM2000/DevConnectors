@@ -550,7 +550,7 @@ button {
   }
 
   .lead {
-    font-size: 0.6rem;
+    font-size: 1.5rem;
   }
 
   /* Navbar */
@@ -617,8 +617,119 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+
+  .ss {
+    position:relative;
+    left:100px;
+    top:10px;
+  }
+
+  .fontconn {
+    font-size: 11.5px;
+  }
+
+  // .profiletop {
+  //   position:relative;
+  //   left:130px;
+  //   bottom:px;
+  // }
+
+  // .gitbtn {
+  //   font-size: .9rem;
+  //   padding: 2px 5.5px;
+  //   background: #312f29;
+  //   color: #1fe600;
+  
+  //   position:relative;
+  //   left:110px;
+  //   bottom:0px;
+  // }
+
+  .gitbtnn {
+    font-size: .9rem;
+    padding: 2px 5.5px;
+    background: #312f29;
+    color: #ff0202;
+  
+    position:relative;
+    left:110px;
+    top:4px;
+  }
+
+  .gitbtn1 {
+    background: #312f29;
+    color: #1fe600;
+  
+    position:relative;
+    left:110px;
+    top:4px;
+  }
+
+// 0000000 error
+
+  // .profiletop  {
+  //   margin: 0 0.125em 0.333em 0;
+  //     display: inline-block;
+  //     padding: 0 7px;
+  //     font-size: 14px;
+  //     font-weight: 500;
+  //     line-height: 18px;
+  //     white-space: nowrap;
+  //     border: 1px solid transparent;
+  //     border-radius: 2em;
+  //     padding-right: 10px;
+  //     padding-left: 10px;
+  //     line-height: 22px;
+  //   color: #1fe600;
+  //     background-color: #312f29;
+  //     border: 1px solid  transparent;
+  // }
+
+  
 }
 
+// mobile applicatio ends here
+
+// desktop device
+@media (min-width: 800px) {
+
+
+  .ss {
+    position:relative;
+    left:834px;
+    bottom:20px;
+  }
+  
+  // .gitbtn {
+  //   background: #312f29;
+  //   color: #1fe600;
+  
+  //   position:relative;
+  //   left:310px;
+  //   bottom:36px;
+  // }
+
+  .gitbtn1 {
+    background: #312f29;
+    color: #1fe600;
+  
+    position:relative;
+    left:370px;
+    bottom:36px;
+  }
+
+  .gitbtnn {
+    background: #312f29;
+    color: #ff0202;
+  
+    position:relative;
+    left:370px;
+    bottom:36px;
+  }
+  
+  
+  }
+  // desktop ends here
 
 .clickk:hover {
   transform: scale(1.1);
@@ -646,5 +757,27 @@ border-radius:60%;
 
 .ccll {
   padding: 2.5rem!important;
+}
+
+.conn  {
+    margin: 0 0.125em 0.333em 0;
+    display: inline-block;
+    padding: 0 7px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: 2em;
+    padding-right: 10px;
+    padding-left: 10px;
+    line-height: 22px;
+    color: #1fe600;
+    background-color: #312f29;
+    border: 1px solid  transparent;
+}
+
+.dev {
+  font-size: 1.4em;
 }
 
