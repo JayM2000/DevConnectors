@@ -86,7 +86,6 @@ export const getprofilebyid = (ids) =>async dispatch => {
 // create profile
 export const createprof = (formdata,navi,edit) =>async dispatch => {
 
-    console.log(`create prof in profile action ->>>>>>>>> ${edit}`);
     try {
         const config = {
             headers: {
@@ -95,8 +94,6 @@ export const createprof = (formdata,navi,edit) =>async dispatch => {
         };
     
         const body = JSON.stringify(formdata);
-        console.log('in profile insertion new ');
-        console.log(body);
 
         const dt = await ax.post('/rout/insert',body,config);
         dispatch({
@@ -104,7 +101,6 @@ export const createprof = (formdata,navi,edit) =>async dispatch => {
             payload:dt.data.mess
         });
 
-        console.log('inside profile ');
         dispatch(setalert(edit ? 'Profile Updated' : 'Profile Created','success'));
 
         if(!edit){
@@ -146,8 +142,6 @@ export const eexp = (formdata,navi) =>async dispatch => {
     }
     catch(err){
         const errs = err.response.data.err.message;
-        // console.log(' in profiles adding experience !!!!!!!!!!');
-        // console.log(errs);
 
         dispatch({
             type:'profilef',
@@ -185,8 +179,6 @@ export const education = (formdata,navi) =>async dispatch => {
     }
     catch(err){
         const errs = err.response.data.err.message;
-        // console.log(' in profiles adding education !!!!!!!!!!');
-        // console.log(errs);
 
         dispatch({
             type:'profilef',
@@ -203,9 +195,6 @@ export const deleteexp = (id) => async dispatch => {
     try {
 
         const dt =await ax.delete(`/rout/expdelid/:${id}`);
-
-        console.log('deleteing data');
-        console.log(dt.data.mess);
         dispatch({
             type:'profilesu',
             payload:dt.data.mess
@@ -352,18 +341,3 @@ export const deldev = (iid) =>async dispatch => {
         dispatch(setalert(err,'danger'));
     }
 }
-
-// export const devconn = (iid) =>async dispatch => {
-//     try {
-//         const config = {
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         };
-
-//         const vl = await ax.get(`/rout/devconn/${iid}`,config);
-
-//     } catch (err) {
-        
-//     }
-// };

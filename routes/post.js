@@ -199,13 +199,10 @@ rout.put('/commentsrem/:postid/:commid',verifytk, async (req,res) => {
         }
 
         const rempost = post.comments.map(like => like.user.toString()).indexOf(userid);
-        console.log(`index of remove post unlike ${rempost}`);
 
         post.comments.splice(rempost,1);
 
         await post.save();
-
-        console.log(post.comments);
 
         res.json({st:200,mess:post.comments});
     }

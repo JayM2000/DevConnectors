@@ -213,8 +213,6 @@ rout.get(
         try {
             const users = await taskdb.find({ owner: user_id}).populate({path: 'owner'});
 
-            console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-            console.log(users[0]);
             const profall = await taskdb.find().populate({path:'owner'});
             const arr = profall.filter((ele) => users[0].devconnect.includes(String(ele.owner._id)));
 
@@ -237,15 +235,19 @@ rout.delete('/del', verifytk, async (req, res) => {
     }
 
     try {
+
+        const dl = await taskdb.updateMany({},{ $pull: {devconnect:String(userid)} });
+
         // delete profile
         await taskdb.findOneAndRemove({ owner: userid });
 
         // delete post
-        await post.deleteMany({ user: userid });
+        // await post.deleteMany({ user: userid });
 
         // delete users as well
         await userdb.findOneAndRemove({ _id: userid });
-        res.json({ mess: 'deleted task' });
+
+        res.json({ mess: 'Profile deleted' });
     }
     catch (err) {
         res.status(404).json({ st: `${err}` });
